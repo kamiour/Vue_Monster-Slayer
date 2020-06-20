@@ -1,5 +1,5 @@
 new Vue({
-  el: "#app",
+  el: '#app',
   data: {
     playerHealth: 100,
     monsterHealth: 100,
@@ -18,7 +18,8 @@ new Vue({
       this.monsterHealth -= damage;
       this.turns.unshift({
         isPlayer: true,
-        text: "Player hits Monster for " + damage,
+        text: 'Player hits Monster for ' + damage,
+        id: Math.random().toString(),
       });
 
       if (this.checkWin()) {
@@ -32,7 +33,8 @@ new Vue({
       this.monsterHealth -= damage;
       this.turns.unshift({
         isPlayer: true,
-        text: "Player hits Monster hard for " + damage,
+        text: 'Player hits Monster hard for ' + damage,
+        id: Math.random().toString(),
       });
 
       if (this.checkWin()) {
@@ -49,7 +51,8 @@ new Vue({
       }
       this.turns.unshift({
         isPlayer: true,
-        text: "Player heals for 10",
+        text: 'Player heals for 10',
+        id: Math.random().toString(),
       });
 
       this.monsterAttack();
@@ -62,7 +65,8 @@ new Vue({
       this.playerHealth -= damage;
       this.turns.unshift({
         isPlayer: false,
-        text: "Monster hits Player for " + damage,
+        text: 'Monster hits Player for ' + damage,
+        id: Math.random().toString(),
       });
 
       this.checkWin();
@@ -72,14 +76,14 @@ new Vue({
     },
     checkWin: function () {
       if (this.monsterHealth <= 0) {
-        if (confirm("You won. New game?")) {
+        if (confirm('You won. New game?')) {
           this.startGame();
         } else {
           this.gameisRunning = false;
         }
         return true;
       } else if (this.playerHealth <= 0) {
-        if (confirm("You lost. New game?")) {
+        if (confirm('You lost. New game?')) {
           this.startGame();
         } else {
           this.gameisRunning = false;
